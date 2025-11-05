@@ -101,7 +101,7 @@ Configura el entorno:
 ---
 
 👤 **Autor**
-Desarrollado por **Tete** – Universidad Tecnológica de Tecamachalco
+Desarrollado por **Tete** @TodTete / Ricardo Vallejo Sanchez  para la Universidad Tecnológica de Tecamachalco 
 
 🔗 Repositorio oficial: [SADDO en GitHub](https://github.com/TodTete/Proyecto-FRABCM/)
 

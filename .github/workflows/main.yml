@@ -1,0 +1,38 @@
+name: CI Pipeline
+
+on: [push, pull_request]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Unit tests
+        run: npm test -- --coverage
+      - name: SonarQube Scan
+        run: sonar-scanner
+      - name: Build Docker image
+        if: success()
+        run: docker build -t myapp:${{ github.sha }} .
+      - name: Push image to registry
+        if: success()
+        run: docker push myapp:${{ github.sha }}
+
+  staging-e2e:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to staging (script)
+        run: ./deploy_staging.sh myapp:${{ github.sha }}
+      - name: Wait for service
+        run: ./wait_for_service.sh
+      - name: Run Cypress E2E
+        run: npx cypress run
+      - name: Performance test (k6)
+        run: k6 run tests/loadtest.js

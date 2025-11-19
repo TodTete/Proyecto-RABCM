@@ -47,7 +47,7 @@ Configura el entorno:
 4. Accede desde el navegador:
 
    ```
-   http://localhost/public
+   http://localhost/pproject/ublic
    ```
 
 ✅ Listo, ya podrás comenzar a usar SADDO.

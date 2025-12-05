@@ -1,4 +1,4 @@
-# 📄 SADDO — Sistema de Administración de Documentos
+# 📄 SADDO / Sistema de Administración de Documentos
 
 Plataforma universitaria para la **gestión y organización de memorandos**, optimizando la administración interna mediante herramientas tecnológicas modernas.
 
